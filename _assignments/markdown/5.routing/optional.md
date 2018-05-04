@@ -19,7 +19,7 @@ This can be reduced so it reduces the noise and makes it easier to maintain.
 
 The `routerLinkActive` directive adds classes to elements based on the active route. They need to be defined on the same element as `routerLink`, or a parent element.
 
-1. Add `routerLinkActive` to the links in the navigation bar. The class `bg--river` can be used to style the link, when the router is active.
+1. Add `routerLinkActive` to the divs surrounding the links in the navigation bar. The class `bg--river` can be used to style the link, when the router is active.
 
 2. Check the browser to see what happens when you navigate to both components. Can you explain why both links are 'active' when the `NewBooksComponent` is on screen?
  You can make use of `routerLinkActiveOptions` to keep this from happening. Have a look at the [documentation](https://angular.io/guide/router#routerlinkactive-binding) for a detailed guide.
