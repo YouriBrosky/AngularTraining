@@ -694,7 +694,7 @@ Use the <code>private</code> keyword to connect <code>http</code> to <code>this<
 </li>
 <li><p>In the method <code>getBooks</code>, return <code>http.get&lt;Book[]&gt;()</code> with the parameter <code>http://localhost:3004/overview</code> instead of the books array.</p>
 </li>
-<li><p>Change the return type of the methode to <code>Observable&lt;Book[]&gt;</code>. Import <code>Observable</code> from <code>&apos;rxjs/Observable&apos;</code> if the IDE does not do this for you.</p>
+<li><p>Change the return type of the methode to <code>Observable&lt;Book[]&gt;</code>. Import <code>Observable</code> from <code>&apos;rxjs&apos;</code> if the IDE does not do this for you.</p>
 </li>
 </ol>
 <h4 id="subscribe">subscribe</h4>
@@ -705,8 +705,8 @@ Use the <code>private</code> keyword to connect <code>http</code> to <code>this<
 </li>
 </ol>
 <h4 id="async-pipe">async pipe</h4>
-<p>Angular has an <code>AsyncPipe</code>, which will remove some boilierplate, and automatically handles subscribtions.
-This <a href="../GLOSSARY.html#pipe" class="glossary-term" title="Change how the interpolated property is outputted in the template.">pipe</a> will also <code>unsubscribe</code> from the if necessary when the component is destroyed.</p>
+<p>Angular has an <code>AsyncPipe</code>, which will remove some boilerplate, and automatically handles subscriptions.
+This <a href="../GLOSSARY.html#pipe" class="glossary-term" title="Change how the interpolated property is outputted in the template.">pipe</a> will also <code>unsubscribe</code> if necessary when the component is destroyed.</p>
 <p>In <code>BooksComponent</code> we need to work with an <code>Observable&lt;Book[]&gt;</code> instead of <code>Book[]</code>.</p>
 <ol>
 <li><p>Change the type of the property <code>books: Book[]</code> to <code>books: Observable&lt;Book[]&gt;</code> in <code>BooksComponent</code></p>
@@ -762,7 +762,7 @@ An Observable is executed when <code>subscribe</code> is called, which will be d
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. Http","level":"1.4.2","depth":2,"next":{"title":"Optional","level":"1.4.3","depth":2,"path":"3.dependency-injection/optional.md","ref":"3.dependency-injection/optional.md","articles":[]},"previous":{"title":"1. Services","level":"1.4.1","depth":2,"path":"3.dependency-injection/1.service.md","ref":"3.dependency-injection/1.service.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"3.dependency-injection/2.http.md","mtime":"2018-02-12T12:43:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-20T10:02:28.080Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2. Http","level":"1.4.2","depth":2,"next":{"title":"Optional","level":"1.4.3","depth":2,"path":"3.dependency-injection/optional.md","ref":"3.dependency-injection/optional.md","articles":[]},"previous":{"title":"1. Services","level":"1.4.1","depth":2,"path":"3.dependency-injection/1.service.md","ref":"3.dependency-injection/1.service.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"3.dependency-injection/2.http.md","mtime":"2018-05-04T12:46:44.991Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T12:48:29.412Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

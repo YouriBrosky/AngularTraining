@@ -689,24 +689,14 @@
 <li><p>Add a methode called <code>getBooks</code> with a return type <code>Book[]</code>, which will return the books.
  Cut and paste the data from <code>BooksComponent</code> into this methode, we will replace this with a Http call later in the assignment.</p>
 </li>
-<li><p>Decorate the <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> with the <code>@Injectable()</code> decorator. We are going to need it later.</p>
-<blockquote>
-<p><strong> Best practice: @Injectable()</strong></p>
-<p>The <code>@Injectable()</code> decorator makes it possible to inject <em>other</em> services into this class
-The <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> class itself is immediately injectable when provided by a module or component, without this decorator.
-However, it is a Best Practice to <strong>always</strong> put this decorator above a <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a>, so you won&apos;t miss it later. And it doesn&apos;t do any harm</p>
-</blockquote>
+<li><p>Decorate the <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> with the <code>@Injectable({providedIn: &apos;root&apos;})</code> decorator. Adding this decorator makes the class available for dependency
+injection in other services or component.</p>
 </li>
 </ol>
-<h4 id="injection-and-initialisation">Injection and initialisation</h4>
-<p>In almost all cases, it&apos;s a good idea to only have 1 instance of any <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a>, for predictability,
-To achieve this, we will define the <code>BooksService</code> only in the <code>providers</code>-array of <code>BooksModule</code>.</p>
+<h4 id="injection">Injection</h4>
 <ol>
-<li><p>Add the property <code>providers: []</code> to <code>BooksModule</code>, and fill it with <code>BooksService</code>.
-<a href="#import-syntax">Import</a> the <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> if the IDE does not do this for you automatically.</p>
-</li>
 <li><p>In <code>BooksComponent</code>, inject <code>BooksService</code> by adding <code>booksService:BooksService</code> to the constructor of <code>BooksComponent</code>.
- Don&apos;t forget the <code>private</code> keyword, so the <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> is immediately bound to <code>this</code> of the <code>BookService</code>.</p>
+Don&apos;t forget the <code>private</code> keyword, so the <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> is immediately bound to <code>this</code> of the <code>BookService</code>.</p>
 </li>
 <li><p>Add <code>implements OnInit</code> to the class definition if you haven&apos;t already.</p>
 <blockquote>
@@ -716,7 +706,7 @@ See <a href="https://angular.io/guide/lifecycle-hooks" target="_blank">life cycl
 </blockquote>
 </li>
 <li><p>Create the method <code>ngOnInit</code> in the component and call get the books from the <code>booksService</code>.
- For now, you can directly set the property <code>books</code> in the component to the result of the method.</p>
+For now, you can directly set the property <code>books</code> in the component to the result of the method.</p>
 </li>
 </ol>
 
@@ -762,7 +752,7 @@ See <a href="https://angular.io/guide/lifecycle-hooks" target="_blank">life cycl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1. Services","level":"1.4.1","depth":2,"next":{"title":"2. Http","level":"1.4.2","depth":2,"path":"3.dependency-injection/2.http.md","ref":"3.dependency-injection/2.http.md","articles":[]},"previous":{"title":"Dependency Injection","level":"1.4","depth":1,"path":"3.dependency-injection/README.md","ref":"3.dependency-injection/README.md","articles":[{"title":"1. Services","level":"1.4.1","depth":2,"path":"3.dependency-injection/1.service.md","ref":"3.dependency-injection/1.service.md","articles":[]},{"title":"2. Http","level":"1.4.2","depth":2,"path":"3.dependency-injection/2.http.md","ref":"3.dependency-injection/2.http.md","articles":[]},{"title":"Optional","level":"1.4.3","depth":2,"path":"3.dependency-injection/optional.md","ref":"3.dependency-injection/optional.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"3.dependency-injection/1.service.md","mtime":"2018-02-12T12:43:31.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-02-20T10:02:28.080Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1. Services","level":"1.4.1","depth":2,"next":{"title":"2. Http","level":"1.4.2","depth":2,"path":"3.dependency-injection/2.http.md","ref":"3.dependency-injection/2.http.md","articles":[]},"previous":{"title":"Dependency Injection","level":"1.4","depth":1,"path":"3.dependency-injection/README.md","ref":"3.dependency-injection/README.md","articles":[{"title":"1. Services","level":"1.4.1","depth":2,"path":"3.dependency-injection/1.service.md","ref":"3.dependency-injection/1.service.md","articles":[]},{"title":"2. Http","level":"1.4.2","depth":2,"path":"3.dependency-injection/2.http.md","ref":"3.dependency-injection/2.http.md","articles":[]},{"title":"Optional","level":"1.4.3","depth":2,"path":"3.dependency-injection/optional.md","ref":"3.dependency-injection/optional.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"3.dependency-injection/1.service.md","mtime":"2018-05-04T12:46:44.990Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T12:48:29.412Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
