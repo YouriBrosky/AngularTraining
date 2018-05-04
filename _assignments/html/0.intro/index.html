@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2. Business Component Test · GitBook</title>
+        <title>Intro · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="optional.html" />
+    <link rel="next" href="../1.modules-and-components/" />
     
     
-    <link rel="prev" href="1.service-test.html" />
+    <link rel="prev" href="../optional.html" />
     
 
     </head>
@@ -121,9 +121,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../0.intro/">
+        <li class="chapter active" data-level="1.2" data-path="./">
             
-                <a href="../0.intro/">
+                <a href="./">
             
                     
                     Intro
@@ -463,9 +463,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8" data-path="./">
+        <li class="chapter " data-level="1.8" data-path="../6.testing/">
             
-                <a href="./">
+                <a href="../6.testing/">
             
                     
                     Testing
@@ -477,9 +477,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="1.service-test.html">
+        <li class="chapter " data-level="1.8.1" data-path="../6.testing/1.service-test.html">
             
-                <a href="1.service-test.html">
+                <a href="../6.testing/1.service-test.html">
             
                     
                     1. Service Test
@@ -490,9 +490,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.2" data-path="2.business-component-test.html">
+        <li class="chapter " data-level="1.8.2" data-path="../6.testing/2.business-component-test.html">
             
-                <a href="2.business-component-test.html">
+                <a href="../6.testing/2.business-component-test.html">
             
                     
                     2. Business Component Test
@@ -503,9 +503,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.3" data-path="optional.html">
+        <li class="chapter " data-level="1.8.3" data-path="../6.testing/optional.html">
             
-                <a href="optional.html">
+                <a href="../6.testing/optional.html">
             
                     
                     Optional
@@ -680,7 +680,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >2. Business Component Test</a>
+        <a href=".." >Intro</a>
     </h1>
 </div>
 
@@ -695,47 +695,56 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h4 id="shelvecomponent-test">shelve.component test</h4>
-<p>The shelve component contains <code>@Input</code>s and <code>@Output</code>s we will have to control from the parent.</p>
+                                <h1 id="intro">Intro</h1>
+<p>In this short intro you will create a very small Angular app with some basic features. This way, you will get a feeling
+what Angular is all about. All features will be explained in more detail in later parts of the training.</p>
+<h4 id="generating-and-running-an-app">Generating and running an app</h4>
 <ol>
-<li><p>Create a <code>shelve.component.spec.ts</code> file in the same folder as <code>shelve.component.ts</code></p>
+<li><p>In a new folder, type <code>ng new myFirstAngularApp</code>. This command generates a skeleton for your new angular app. This 
+skeleton gives you a very good starting point for your app.</p>
 </li>
-<li><p>Import the <code>ShelveComponent</code>.</p>
+<li><p>Change your directory to <code>cd myFirstAngularApp</code> where the skeleton was created and run <code>ng serve</code>. This command runs
+a simple http server that serves your newly created app.</p>
 </li>
-<li><p>Import <code>TestBed</code> from <code>&apos;@angular/core/testing&apos;</code>;</p>
-</li>
-<li><p>Start with <code>beforeEach(() =&gt; TestBed.configureTestingModule({}))</code> and put <code>declarations: []</code> in the <code>ShelveComponent</code>.</p>
-</li>
-<li><p>In the same <code>beforeEach</code> method call <code>compileComponents()</code> of <code>TestBed</code>.</p>
-</li>
-<li><p>Create a new test in the <code>describe()</code> using <code>it()</code>. Try to fit the following sentence into the <code>describe</code> and <code>it</code>s:
-&apos;When the shelve component is given a list of books, the book titles are rendered in the template&apos;</p>
+<li><p>Browse to <code>localhost:4200</code>. Congratulations. You&apos;ve just created your first Angular app and now you see it running.</p>
 </li>
 </ol>
-<h5 id="componentfixture">ComponentFixture</h5>
-<blockquote>
-<p><strong>ComponentFixture properties</strong></p>
-<ul>
-<li><code>componentInstance</code>: allows interaction with the <em>class</em>.</li>
-<li><code>debugElement</code>: allows interaction with the <em>template</em>.</li>
-</ul>
-</blockquote>
+<h4 id="implementing-your-own-component">Implementing your own component</h4>
 <ol>
-<li><p>Call <code>TestBed.createComponent(ShelveComponent)</code> in the test. This returns a <code>ComponentFixture</code>.</p>
-</li>
-<li><p>Assign this return value to a variable <code>fixture: ComponentFixture&lt;ShelveComponent&gt;</code>.</p>
-</li>
-<li><p>Fill the <code>books</code> property of <code>fixture.componentInstance</code> with a new Observable, by importing <code>of</code> from <code>&apos;rxjs/operators&apos;</code> and returning two <code>Books</code> objects.</p>
-<pre><code class="lang-javascript"> <span class="hljs-keyword">of</span>([ { title: <span class="hljs-string">&apos;a&apos;</span>, author: <span class="hljs-string">&apos;b&apos;</span> }, { title: <span class="hljs-string">&apos;c&apos;</span>, author: <span class="hljs-string">&apos;d&apos;</span> } ]);
+<li><p>Open the folder <code>myFirstAngularApp</code> in your favourite IDE or text editor. Go to <code>src\app</code> and open 
+<code>app.component.html</code>. This file contains the html that is currently displayed on the screen. Replace the contents of 
+the file with this:</p>
+<pre><code class="lang-html"> <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Click me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+ You clicked me 0 times.
 </code></pre>
 </li>
-<li><p>Call <code>fixture.detectChanges();</code> to start the change detection process from Angular which will call the lifecycle methods and render the value in the template.</p>
+<li><p>Return to the browser. You will see that changes are immediately picked up, without you having to restart the 
+application or refresh the browser. If you click the button, nothing happens yet. Let&apos;s add some interactivity!</p>
 </li>
-<li><p>Add an expect to the number of elements in the list. We&apos;ve mocked the input with a list of 2 books.</p>
-<pre><code class="lang-javascript"> expect(fixture.debugElement.queryAll(By.css(<span class="hljs-string">&apos;button&apos;</span>)).length).toBe(<span class="hljs-number">2</span>);
+<li><p>Open <code>app.component.ts</code>. This TypeScript class defines the behaviour for the html you just saw. Add a property
+<code>clicked</code> and a function <code>onClick</code>:</p>
+<pre><code class="lang-typescript"> <span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> AppComponent {
+
+   clicked = <span class="hljs-number">0</span>;
+
+   onClick() {
+     <span class="hljs-keyword">this</span>.clicked++;
+     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`You clicked <span class="hljs-subst">${this.clicked}</span> times`</span>);
+   }   
+ }
 </code></pre>
 </li>
-<li><p>Run the tests by executing <code>ng test</code> on the command line.</p>
+<li><p>The next step is to tell Angular that <code>onClick</code> should be called when the button is clicked. We use a so called
+event handler for this:</p>
+<pre><code class="lang-html"> <span class="hljs-tag">&lt;<span class="hljs-name">button</span> (<span class="hljs-attr">click</span>)=<span class="hljs-string">&apos;onClick()&apos;</span>&gt;</span>
+</code></pre>
+</li>
+<li><p>Open the browser console and click the button. The message <code>You clicked ... times</code> will be displayed.</p>
+</li>
+<li><p>To show the number in the template, we will use a so called <a href="../GLOSSARY.html#interpolation" class="glossary-term" title="Showing a property in the template with Angular&apos;s template syntax.">interpolation</a>. In the html, replace the number 0 with
+<code>{{ clicked }}</code>. This will show the value of the clicked property in the TypeScript class on 
+the screen. Check that it works.</p>
 </li>
 </ol>
 
@@ -765,12 +774,12 @@
 
             
                 
-                <a href="1.service-test.html" class="navigation navigation-prev " aria-label="Previous page: 1. Service Test">
+                <a href="../optional.html" class="navigation navigation-prev " aria-label="Previous page: Optional">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="optional.html" class="navigation navigation-next " aria-label="Next page: Optional">
+                <a href="../1.modules-and-components/" class="navigation navigation-next " aria-label="Next page: Modules & Components">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -781,7 +790,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. Business Component Test","level":"1.8.2","depth":2,"next":{"title":"Optional","level":"1.8.3","depth":2,"path":"6.testing/optional.md","ref":"6.testing/optional.md","articles":[]},"previous":{"title":"1. Service Test","level":"1.8.1","depth":2,"path":"6.testing/1.service-test.md","ref":"6.testing/1.service-test.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"6.testing/2.business-component-test.md","mtime":"2018-02-21T07:41:47.586Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T13:55:45.634Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Intro","level":"1.2","depth":1,"next":{"title":"Modules & Components","level":"1.3","depth":1,"path":"1.modules-and-components/README.md","ref":"1.modules-and-components/README.md","articles":[{"title":"1. RootModule","level":"1.3.1","depth":2,"path":"1.modules-and-components/1.root-module.md","ref":"1.modules-and-components/1.root-module.md","articles":[]},{"title":"2. Business Component","level":"1.3.2","depth":2,"path":"1.modules-and-components/2.business-component-books.md","ref":"1.modules-and-components/2.business-component-books.md","articles":[]},{"title":"3. FeatureModule","level":"1.3.3","depth":2,"path":"1.modules-and-components/3.feature-module.md","ref":"1.modules-and-components/3.feature-module.md","articles":[]},{"title":"Optional","level":"1.3.4","depth":2,"path":"1.modules-and-components/optional.md","ref":"1.modules-and-components/optional.md","articles":[]}]},"previous":{"title":"Optional","level":"1.1.1","depth":2,"path":"optional.md","ref":"optional.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"0.intro/README.md","mtime":"2018-05-04T13:55:41.211Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T13:55:45.634Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
