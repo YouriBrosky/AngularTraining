@@ -31,6 +31,7 @@
   * [1. Feature Routes](5.routing/1.books-routing-module.md)
   * [2. Root Routes](5.routing/2.root-routing-module.md)
   * [3. Routerlink](5.routing/3.router-link.md)
+  * [4. 404](5.routing/4.404.md)
   * [Optional](5.routing/optional.md)
   
 * [Testing](6.testing/README.md)

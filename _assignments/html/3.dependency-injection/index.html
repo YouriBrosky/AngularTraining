@@ -445,7 +445,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.4" data-path="../5.routing/optional.html">
+        <li class="chapter " data-level="1.7.4" data-path="../5.routing/4.404.html">
+            
+                <a href="../5.routing/4.404.html">
+            
+                    
+                    4. 404
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../5.routing/optional.html">
             
                 <a href="../5.routing/optional.html">
             
@@ -754,9 +767,11 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="dependency-injection">Dependency Injection</h1>
-<p>At the moment <code>BooksComponent</code> shows the books in the template from hardcoded data. In reality this data is likely to be stored on some server, which will be fetched by the application when necessary.</p>
+<p>At the moment <code>BooksComponent</code> shows the books in the template from hardcoded data. 
+In reality this data is likely to be stored on some server, which will be fetched by the application when necessary.</p>
 <p>To get or send data, transform it or store is the responsibility of a <strong><a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">Service</a></strong>.
-Angular gives <a href="https://angular.io/guide/dependency-injection" target="_blank">Dependency Injection</a> out of the box te manage the creation of instances.</p>
+To be even more precise: if the operation has nothing to do with the template, it should be in a <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a>.</p>
+<p>Angular gives <a href="https://angular.io/guide/dependency-injection" target="_blank">Dependency Injection</a> out of the box te manage the creation of instances.</p>
 <h2 id="techniques"><a href="https://angular.io/guide/dependency-injection" target="_blank">Techniques</a></h2>
 <ul>
 <li>Provide services</li>
@@ -810,7 +825,7 @@ Angular gives <a href="https://angular.io/guide/dependency-injection" target="_b
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Dependency Injection","level":"1.5","depth":1,"next":{"title":"1. Services","level":"1.5.1","depth":2,"path":"3.dependency-injection/1.service.md","ref":"3.dependency-injection/1.service.md","articles":[]},"previous":{"title":"Optional","level":"1.4.3","depth":2,"path":"2.template-syntax/optional.md","ref":"2.template-syntax/optional.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"3.dependency-injection/README.md","mtime":"2018-05-25T09:24:46.512Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-25T09:39:57.316Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Dependency Injection","level":"1.5","depth":1,"next":{"title":"1. Services","level":"1.5.1","depth":2,"path":"3.dependency-injection/1.service.md","ref":"3.dependency-injection/1.service.md","articles":[]},"previous":{"title":"Optional","level":"1.4.3","depth":2,"path":"2.template-syntax/optional.md","ref":"2.template-syntax/optional.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"3.dependency-injection/README.md","mtime":"2018-05-25T09:54:15.799Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-25T13:29:44.069Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
