@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "ili",
+      "prefix": "ibs",
       "schematics": {},
       "architect": {
         "build": {
