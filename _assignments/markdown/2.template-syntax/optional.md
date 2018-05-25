@@ -44,7 +44,7 @@ This variable we can pass into our directive using another `@Input` decorated pr
 To finish this task, we need to actually toggle the class to change tha background color. We need to remove the class 'bg--carrot' if the book *is not* selected,
  and add the class `bg--cyan` if the book *is* selected.
  The standard HTML-element provided by the browser has a property called `classlist`, that has a method called `toggleClass`. This fits our needs exactly.
- *NOTE* classlist is not implemented in older browsers. Make sure the polyfill is uncommented in the file `polyfills.ts` and the classlist npm package is installed.
+ *NOTE* `classlist` is not implemented in older browsers. Make sure the polyfill is uncommented in the file `polyfills.ts` and the `classlist` npm package is installed.
  
  1. Toggle the classes using `toggleClass` on the property `classlist` from `bookElement`.
 

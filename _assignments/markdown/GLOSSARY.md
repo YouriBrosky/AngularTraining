@@ -15,7 +15,7 @@ The most commonly used are below, and a complete list can be found [here]().
 ```javascript
 @Component({
     selector                    // string; The name of the component used in the template
-    template | templateUrl      // string; The template itself using backticks ``, or the url to the template. If the moduleId is set, a relative path will suffice
+    template | templateUrl      // string; The template itself using tickbacks ``, or the url to the template. If the moduleId is set, a relative path will suffice
     styles | stylesUrl          // array | string; The location for component specific CSS, or a reference to a css file
 })
 ```
@@ -109,7 +109,7 @@ A reference to an element in the template. Can be given to the component.
 ## $event
 Pseudo variable that contains the value from the event.
 ### 
-All methodes which are connected like `(click)="doAction($event)"` will authomatically get the parameter `$event` filled by Angular
+All methods that are connected like `(click)="doAction($event)"` will automatically get the parameter `$event` filled by Angular
 This helps with encapsulation, because you don't need to know the name of the parameter from the event.
 
 ## @ViewChild()
@@ -129,7 +129,7 @@ providers: [ MyService ]
 ```
 
 ## AsyncPipe
-With the `async`-pipe from Angular it's easier to manage simple Observables. This pipe also ensures that components are deregistered from the sequence when the component is destroyed.
+With the `async`-pipe from Angular it's easier to manage simple Observables. This pipe also ensures that components are unregistered from the sequence when the component is destroyed.
 
 ## operators
 Observable operators must be imported from 'rxjs/operators' to use them.

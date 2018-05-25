@@ -637,7 +637,65 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="../GLOSSARY.html">
+        <li class="chapter " data-level="1.11" data-path="../9.cli/">
+            
+                <a href="../9.cli/">
+            
+                    
+                    CLI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../9.cli/1.ng-generate.md">
+            
+                <span>
+            
+                    
+                    1. Generate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../9.cli/2.ng-add.md">
+            
+                <span>
+            
+                    
+                    2. Add
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../9.cli/optional.html">
+            
+                <a href="../9.cli/optional.html">
+            
+                    
+                    Optional
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../GLOSSARY.html">
             
                 <a href="../GLOSSARY.html">
             
@@ -717,7 +775,7 @@
 </li>
 <li><p>Back in the template of <code>BooksComponent</code>, set the selector of <code>ShelveComponent</code> between <code>&lt;!-- Start ShelveComponent --&gt;</code> and <code>&lt;!-- End ShelveComponent --&gt;</code> .</p>
 </li>
-<li><p>Show the titels of <code>books</code> in a <code>&lt;button&gt;</code> element with *<a href="../GLOSSARY.html#ngfor" class="glossary-term" title="Loop over an iterable and repeat the element that the directive is put upon.">ngFor</a> and <a href="../GLOSSARY.html#interpolation" class="glossary-term" title="Showing a property in the template with Angular&apos;s template syntax.">interpolation</a></p>
+<li><p>Show the titles of <code>books</code> in a <code>&lt;button&gt;</code> element with *<a href="../GLOSSARY.html#ngfor" class="glossary-term" title="Loop over an iterable and repeat the element that the directive is put upon.">ngFor</a> and <a href="../GLOSSARY.html#interpolation" class="glossary-term" title="Showing a property in the template with Angular&apos;s template syntax.">interpolation</a></p>
 </li>
 <li><p>To get the books from <code>BooksComponent</code> into <code>ShelveComponent</code>, add <code>[books]=&quot;books&quot;</code> in the template of <code>BooksComponent</code> in the tag <code>&lt;ibs-shelve&gt;</code>. This is <a href="https://angular.io/guide/template-syntax#property-binding--property-" target="_blank">Property binding</a></p>
 </li>
@@ -730,7 +788,7 @@
 <li><p>In <code>ShelveComponent</code>, create a new <code>@Output</code> property called <code>select</code> and instantiate it with an <code>EventEmitter&lt;Book&gt;</code>.
  The <code>EventEmitter</code> must be imported from <code>@angular/core</code>.</p>
 </li>
-<li><p>Create a method <code>onSelect</code> with a paramter <code>book:Book</code>, and call from this method the <code>@Output</code> property <code>select.emit()</code>.</p>
+<li><p>Create a method <code>onSelect</code> with a parameter <code>book:Book</code>, and call from this method the <code>@Output</code> property <code>select.emit()</code>.</p>
 </li>
 <li><p>To call <code>onSelect</code> from the template, we will listen for the <code>(click)</code> event of <code>&lt;button&gt;</code>.
 Since we have access to an instance of <code>book</code> in each element thanks to <code>*ngFor=&quot;let book of books&quot;</code>, we can pass this from the template to <code>onSelect</code>.</p>
@@ -787,7 +845,7 @@ Since we have access to an instance of <code>book</code> in each element thanks 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1. ShelveComponent","level":"1.4.1","depth":2,"next":{"title":"2. BookComponent","level":"1.4.2","depth":2,"path":"2.template-syntax/2.presentation-component-book.md","ref":"2.template-syntax/2.presentation-component-book.md","articles":[]},"previous":{"title":"Template Syntax","level":"1.4","depth":1,"path":"2.template-syntax/README.md","ref":"2.template-syntax/README.md","articles":[{"title":"1. ShelveComponent","level":"1.4.1","depth":2,"path":"2.template-syntax/1.presentation-component-shelve.md","ref":"2.template-syntax/1.presentation-component-shelve.md","articles":[]},{"title":"2. BookComponent","level":"1.4.2","depth":2,"path":"2.template-syntax/2.presentation-component-book.md","ref":"2.template-syntax/2.presentation-component-book.md","articles":[]},{"title":"Optional","level":"1.4.3","depth":2,"path":"2.template-syntax/optional.md","ref":"2.template-syntax/optional.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"2.template-syntax/1.presentation-component-shelve.md","mtime":"2018-02-21T07:41:47.577Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T13:55:45.634Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1. ShelveComponent","level":"1.4.1","depth":2,"next":{"title":"2. BookComponent","level":"1.4.2","depth":2,"path":"2.template-syntax/2.presentation-component-book.md","ref":"2.template-syntax/2.presentation-component-book.md","articles":[]},"previous":{"title":"Template Syntax","level":"1.4","depth":1,"path":"2.template-syntax/README.md","ref":"2.template-syntax/README.md","articles":[{"title":"1. ShelveComponent","level":"1.4.1","depth":2,"path":"2.template-syntax/1.presentation-component-shelve.md","ref":"2.template-syntax/1.presentation-component-shelve.md","articles":[]},{"title":"2. BookComponent","level":"1.4.2","depth":2,"path":"2.template-syntax/2.presentation-component-book.md","ref":"2.template-syntax/2.presentation-component-book.md","articles":[]},{"title":"Optional","level":"1.4.3","depth":2,"path":"2.template-syntax/optional.md","ref":"2.template-syntax/optional.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"2.template-syntax/1.presentation-component-shelve.md","mtime":"2018-05-25T09:23:39.471Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-25T09:39:57.316Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

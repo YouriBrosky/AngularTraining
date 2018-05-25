@@ -24,7 +24,7 @@ Since communicating with the backend is the job for a service, we are going to a
 
 2. Inject the `BooksService` in the constructor of `NewBookComponent`.
 
-3. In your method which handles the submit, check if the form is [valid](#template-variabelen) and send the book if this is true.
+3. In your method which handles the submit, check if the form is `valid` and emit the book to the parent if this check passes.
 
 5. `subscribe` to the `Observable` from the `BookService`, to execute the sequence and do the POST call.
 
@@ -40,7 +40,7 @@ This does require extra management with boolean values and can cause the view to
 
 ##### Bi directional service
 With a [Bi-directional service](https://angular.io/guide/component-interaction#parent-and-children-communicate-via-a-service) you manage the observable yourself, instead of directly listening for the http calls. 
-This is a very powerful mechanism, but requires you to unsubcribe from the observable yourself. This requires some rebuilding and rethinking of the application.
+This is a very powerful mechanism, but requires you to unsubscribe from the observable yourself. This requires some rebuilding and rethinking of the application.
 
 #### price
 
@@ -73,7 +73,7 @@ or
 
 #### delete
 Now that we can add books, it would also be nice to be able to remove a book.
-There is an endpoint available on `/book/:id` which handles http `DELETE` calls to delete a book from the serven. The placholder `:id` is meant for the ID of the book.
+There is an endpoint available on `/book/:id` which handles http `DELETE` calls to delete a book from the server. The placeholder `:id` is meant for the ID of the book.
 This endpoint gives you the following response
 ```javascript
 { book: book, deleted: true } // Book is the deleted book object.
@@ -81,14 +81,14 @@ This endpoint gives you the following response
 
 When the book is not found, you will get the an error 500 with the following response
 ```javascript
-{ detail: "Book: " + book.id + "niet gevonden", deleted: false }
+{ detail: "Book: " + book.id + "not found", deleted: false }
 ```
 
 1. Create a method in `BooksService` that will do the HTTP Delete call.
 
 2. Add a button to the application which will eventually call the delete method in `BooksService`. Remember the responsibilities of the different components, and put the code in the right places.
 ```javascript
-<button class="g--12 btn--red color--white">verwijder</button>
+<button class="g--12 btn--red color--white">Delete</button>
 ```
 
 3. For now, you have to refresh to see the deleted book be removed from the screen. In a following optional assignment we will try to update the view automatically.

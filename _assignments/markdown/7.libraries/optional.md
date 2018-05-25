@@ -15,4 +15,4 @@ more info:
 * [Prevent reimport of the CoreModule](https://angular.io/guide/singleton-services#prevent-reimport-of-the-coremodule)
 * [Bad practices](https://angular.io/guide/ngmodule-faq#q-why-bad)
 
-. Restructure the application with a `CoreModule`. What other mpdule that is imported into `BooksModule` can be moved to the `CoreModule`?
+. Restructure the application with a `CoreModule`. What other module that is imported into `BooksModule` can be moved to the `CoreModule`?

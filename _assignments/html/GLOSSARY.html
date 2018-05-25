@@ -58,7 +58,7 @@
 
     
     
-    <link rel="prev" href="8.rxjs/optional.html" />
+    <link rel="prev" href="9.cli/optional.html" />
     
 
     </head>
@@ -635,7 +635,65 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.11" data-path="GLOSSARY.html">
+        <li class="chapter " data-level="1.11" data-path="9.cli/">
+            
+                <a href="9.cli/">
+            
+                    
+                    CLI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="9.cli/1.ng-generate.md">
+            
+                <span>
+            
+                    
+                    1. Generate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="9.cli/2.ng-add.md">
+            
+                <span>
+            
+                    
+                    2. Add
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="9.cli/optional.html">
+            
+                <a href="9.cli/optional.html">
+            
+                    
+                    Optional
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12" data-path="GLOSSARY.html">
             
                 <a href="GLOSSARY.html">
             
@@ -706,7 +764,7 @@
 <p>The most commonly used are below, and a complete list can be found <a href="">here</a>.</p>
 <pre><code class="lang-javascript">@Component({
     selector                    <span class="hljs-comment">// string; The name of the component used in the template</span>
-    template | templateUrl      <span class="hljs-comment">// string; The template itself using backticks ``, or the url to the template. If the moduleId is set, a relative path will suffice</span>
+    template | templateUrl      <span class="hljs-comment">// string; The template itself using tickbacks ``, or the url to the template. If the moduleId is set, a relative path will suffice</span>
     styles | stylesUrl          <span class="hljs-comment">// array | string; The location for component specific CSS, or a reference to a css file</span>
 })
 </code></pre>
@@ -776,7 +834,7 @@
 <h2 id="event">$event</h2>
 <p>Pseudo variable that contains the value from the event.</p>
 <h3 id=""> </h3>
-<p>All methodes which are connected like <code>(click)=&quot;doAction($event)&quot;</code> will authomatically get the parameter <code>$event</code> filled by Angular
+<p>All methods that are connected like <code>(click)=&quot;doAction($event)&quot;</code> will automatically get the parameter <code>$event</code> filled by Angular
 This helps with encapsulation, because you don&apos;t need to know the name of the parameter from the event.</p>
 <h2 id="viewchild">@ViewChild()</h2>
 <p>Decorator to get an element from the template into a template class. The decorated property is callable in ngAfterViewInit.</p>
@@ -790,7 +848,7 @@ Make sure you only have the <a href="GLOSSARY.html#service" class="glossary-term
 <pre><code class="lang-javascript">providers: [ MyService ]
 </code></pre>
 <h2 id="asyncpipe">AsyncPipe</h2>
-<p>With the <code>async</code>-<a href="GLOSSARY.html#pipe" class="glossary-term" title="Change how the interpolated property is outputted in the template.">pipe</a> from Angular it&apos;s easier to manage simple Observables. This <a href="GLOSSARY.html#pipe" class="glossary-term" title="Change how the interpolated property is outputted in the template.">pipe</a> also ensures that components are deregistered from the sequence when the component is destroyed.</p>
+<p>With the <code>async</code>-<a href="GLOSSARY.html#pipe" class="glossary-term" title="Change how the interpolated property is outputted in the template.">pipe</a> from Angular it&apos;s easier to manage simple Observables. This <a href="GLOSSARY.html#pipe" class="glossary-term" title="Change how the interpolated property is outputted in the template.">pipe</a> also ensures that components are unregistered from the sequence when the component is destroyed.</p>
 <h2 id="operators">operators</h2>
 <p>Observable <a href="GLOSSARY.html#operators" class="glossary-term" title="Observable operators must be imported from &apos;rxjs/operators&apos; to use them.">operators</a> must be imported from &apos;rxjs/<a href="GLOSSARY.html#operators" class="glossary-term" title="Observable operators must be imported from &apos;rxjs/operators&apos; to use them.">operators</a>&apos; to use them.</p>
 <h3 id=""> </h3>
@@ -844,7 +902,7 @@ Because of the size of number of <a href="GLOSSARY.html#operators" class="glossa
 
             
                 
-                <a href="8.rxjs/optional.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Optional">
+                <a href="9.cli/optional.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Optional">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -856,7 +914,7 @@ Because of the size of number of <a href="GLOSSARY.html#operators" class="glossa
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Glossary","level":"1.11","depth":1,"previous":{"title":"Optional","level":"1.10.3","depth":2,"path":"8.rxjs/optional.md","ref":"8.rxjs/optional.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"GLOSSARY.md","mtime":"2018-02-21T07:41:47.591Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T13:55:45.634Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Glossary","level":"1.12","depth":1,"previous":{"title":"Optional","level":"1.11.3","depth":2,"path":"9.cli/optional.md","ref":"9.cli/optional.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"GLOSSARY.md","mtime":"2018-05-25T09:31:58.369Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-25T09:39:57.316Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

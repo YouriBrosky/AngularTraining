@@ -637,7 +637,65 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="../GLOSSARY.html">
+        <li class="chapter " data-level="1.11" data-path="../9.cli/">
+            
+                <a href="../9.cli/">
+            
+                    
+                    CLI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../9.cli/1.ng-generate.md">
+            
+                <span>
+            
+                    
+                    1. Generate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../9.cli/2.ng-add.md">
+            
+                <span>
+            
+                    
+                    2. Add
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../9.cli/optional.html">
+            
+                <a href="../9.cli/optional.html">
+            
+                    
+                    Optional
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../GLOSSARY.html">
             
                 <a href="../GLOSSARY.html">
             
@@ -721,7 +779,7 @@ Give it the correct return type.</p>
 </li>
 <li><p>Inject the <code>BooksService</code> in the constructor of <code>NewBookComponent</code>.</p>
 </li>
-<li><p>In your method which handles the submit, check if the form is <a href="#template-variabelen">valid</a> and send the book if this is true.</p>
+<li><p>In your method which handles the submit, check if the form is <code>valid</code> and emit the book to the parent if this check passes.</p>
 </li>
 <li><p><code>subscribe</code> to the <code>Observable</code> from the <code>BookService</code>, to execute the sequence and do the POST call.</p>
 </li>
@@ -736,7 +794,7 @@ However, when <code>success</code> is false, show a <a href="#error%20message">m
 This does require extra management with boolean values and can cause the view to flash a bit.</p>
 <h5 id="bi-directional-service">Bi directional service</h5>
 <p>With a <a href="https://angular.io/guide/component-interaction#parent-and-children-communicate-via-a-service" target="_blank">Bi-directional service</a> you manage the observable yourself, instead of directly listening for the http calls. 
-This is a very powerful mechanism, but requires you to unsubcribe from the observable yourself. This requires some rebuilding and rethinking of the application.</p>
+This is a very powerful mechanism, but requires you to unsubscribe from the observable yourself. This requires some rebuilding and rethinking of the application.</p>
 <h4 id="price">price</h4>
 <ol>
 <li>Add an input field for <code>price</code>.</li>
@@ -764,18 +822,18 @@ or
 </code></pre>
 <h4 id="delete">delete</h4>
 <p>Now that we can add books, it would also be nice to be able to remove a book.
-There is an endpoint available on <code>/book/:id</code> which handles http <code>DELETE</code> calls to delete a book from the serven. The placholder <code>:id</code> is meant for the ID of the book.
+There is an endpoint available on <code>/book/:id</code> which handles http <code>DELETE</code> calls to delete a book from the server. The placeholder <code>:id</code> is meant for the ID of the book.
 This endpoint gives you the following response</p>
 <pre><code class="lang-javascript">{ book: book, deleted: <span class="hljs-literal">true</span> } <span class="hljs-comment">// Book is the deleted book object.</span>
 </code></pre>
 <p>When the book is not found, you will get the an error 500 with the following response</p>
-<pre><code class="lang-javascript">{ detail: <span class="hljs-string">&quot;Book: &quot;</span> + book.id + <span class="hljs-string">&quot;niet gevonden&quot;</span>, deleted: <span class="hljs-literal">false</span> }
+<pre><code class="lang-javascript">{ detail: <span class="hljs-string">&quot;Book: &quot;</span> + book.id + <span class="hljs-string">&quot;not found&quot;</span>, deleted: <span class="hljs-literal">false</span> }
 </code></pre>
 <ol>
 <li><p>Create a method in <code>BooksService</code> that will do the HTTP Delete call.</p>
 </li>
 <li><p>Add a button to the application which will eventually call the delete method in <code>BooksService</code>. Remember the responsibilities of the different components, and put the code in the right places.</p>
-<pre><code class="lang-javascript">&lt;button class=&quot;g--12 btn--red color--white&quot;&gt;verwijder&lt;/button&gt;
+<pre><code class="lang-javascript">&lt;button class=&quot;g--12 btn--red color--white&quot;&gt;Delete&lt;/button&gt;
 </code></pre>
 </li>
 <li><p>For now, you have to refresh to see the deleted book be removed from the screen. In a following optional assignment we will try to update the view automatically.</p>
@@ -887,7 +945,7 @@ What changes would you need to make to get <code>NewBookComponent</code> reusabl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Optional","level":"1.6.4","depth":2,"next":{"title":"Routing","level":"1.7","depth":1,"path":"5.routing/README.md","ref":"5.routing/README.md","articles":[{"title":"1. Feature Routes","level":"1.7.1","depth":2,"path":"5.routing/1.books-routing-module.md","ref":"5.routing/1.books-routing-module.md","articles":[]},{"title":"2. Root Routes","level":"1.7.2","depth":2,"path":"5.routing/2.root-routing-module.md","ref":"5.routing/2.root-routing-module.md","articles":[]},{"title":"3. Routerlink","level":"1.7.3","depth":2,"path":"5.routing/3.router-link.md","ref":"5.routing/3.router-link.md","articles":[]},{"title":"Optional","level":"1.7.4","depth":2,"path":"5.routing/optional.md","ref":"5.routing/optional.md","articles":[]}]},"previous":{"title":"3. Validations","level":"1.6.3","depth":2,"path":"4.reactive-forms/3.validations.md","ref":"4.reactive-forms/3.validations.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"4.reactive-forms/optional.md","mtime":"2018-02-21T07:41:47.581Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T13:55:45.634Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Optional","level":"1.6.4","depth":2,"next":{"title":"Routing","level":"1.7","depth":1,"path":"5.routing/README.md","ref":"5.routing/README.md","articles":[{"title":"1. Feature Routes","level":"1.7.1","depth":2,"path":"5.routing/1.books-routing-module.md","ref":"5.routing/1.books-routing-module.md","articles":[]},{"title":"2. Root Routes","level":"1.7.2","depth":2,"path":"5.routing/2.root-routing-module.md","ref":"5.routing/2.root-routing-module.md","articles":[]},{"title":"3. Routerlink","level":"1.7.3","depth":2,"path":"5.routing/3.router-link.md","ref":"5.routing/3.router-link.md","articles":[]},{"title":"Optional","level":"1.7.4","depth":2,"path":"5.routing/optional.md","ref":"5.routing/optional.md","articles":[]}]},"previous":{"title":"3. Validations","level":"1.6.3","depth":2,"path":"4.reactive-forms/3.validations.md","ref":"4.reactive-forms/3.validations.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"4.reactive-forms/optional.md","mtime":"2018-05-25T09:27:52.613Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-25T09:39:57.316Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -637,7 +637,65 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="../GLOSSARY.html">
+        <li class="chapter " data-level="1.11" data-path="../9.cli/">
+            
+                <a href="../9.cli/">
+            
+                    
+                    CLI
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../9.cli/1.ng-generate.md">
+            
+                <span>
+            
+                    
+                    1. Generate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../9.cli/2.ng-add.md">
+            
+                <span>
+            
+                    
+                    2. Add
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../9.cli/optional.html">
+            
+                <a href="../9.cli/optional.html">
+            
+                    
+                    Optional
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../GLOSSARY.html">
             
                 <a href="../GLOSSARY.html">
             
@@ -733,7 +791,7 @@ We will use Angular&apos;s <code>HttpClientTestingModule</code> and <code>HttpTe
 </li>
 <li><p>Obtain an <code>HttpTestingController</code> instance by calling <code>TestBed.get(HttpTestingController)</code> and assigning the result to a variable.</p>
 </li>
-<li><p>Call <code>expectOne(&apos;localhost:3004/overview&apos;)</code> on <code>httpTestingController</code> and assign the <code>TestRequest</code> result to a variabele.
+<li><p>Call <code>expectOne(&apos;localhost:3004/overview&apos;)</code> on <code>httpTestingController</code> and assign the <code>TestRequest</code> result to a variable.
  If this URL is not called, the test will fail.</p>
 <blockquote>
 <p> <em>TestRequest</em> 
@@ -750,11 +808,11 @@ For <code>Object</code>s use the <code>toEqual</code> matcher. This matcher will
 <li><p>Finally we&apos;d like to see that all Http-calls have been processed and none are still open. Use the <code>verify()</code> method on the <code>HttpTestingController</code> instance for this. 
 This will make the test fail if there are still any open calls. This could occur if for example the <code>retry()</code> operator has been used.</p>
 </li>
-<li><p>Write a test for the error handler using the same <code>flush</code>-methode, but this time provide a second parameter passing the <code>status</code> and <code>statusText</code>. </p>
+<li><p>Write a test for the error handler using the same <code>flush</code>-method, but this time provide a second parameter passing the <code>status</code> and <code>statusText</code>. </p>
 <blockquote>
 <p><strong>Best Practice - error scenario</strong></p>
 <p>Always add an test for the error handling. At a minimum test the presence of an error message.
-This makes your test sturdier and forces error handling to be used for every <code>Observable</code>.</p>
+This makes your test more robust and forces error handling to be used for every <code>Observable</code>.</p>
 </blockquote>
 </li>
 <li><p>Run the tests by executing <code>ng test</code> on the command line.</p>
@@ -803,7 +861,7 @@ This makes your test sturdier and forces error handling to be used for every <co
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1. Service Test","level":"1.8.1","depth":2,"next":{"title":"2. Business Component Test","level":"1.8.2","depth":2,"path":"6.testing/2.business-component-test.md","ref":"6.testing/2.business-component-test.md","articles":[]},"previous":{"title":"Testing","level":"1.8","depth":1,"path":"6.testing/README.md","ref":"6.testing/README.md","articles":[{"title":"1. Service Test","level":"1.8.1","depth":2,"path":"6.testing/1.service-test.md","ref":"6.testing/1.service-test.md","articles":[]},{"title":"2. Business Component Test","level":"1.8.2","depth":2,"path":"6.testing/2.business-component-test.md","ref":"6.testing/2.business-component-test.md","articles":[]},{"title":"Optional","level":"1.8.3","depth":2,"path":"6.testing/optional.md","ref":"6.testing/optional.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"6.testing/1.service-test.md","mtime":"2018-02-21T07:41:47.585Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-04T13:55:45.634Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1. Service Test","level":"1.8.1","depth":2,"next":{"title":"2. Business Component Test","level":"1.8.2","depth":2,"path":"6.testing/2.business-component-test.md","ref":"6.testing/2.business-component-test.md","articles":[]},"previous":{"title":"Testing","level":"1.8","depth":1,"path":"6.testing/README.md","ref":"6.testing/README.md","articles":[{"title":"1. Service Test","level":"1.8.1","depth":2,"path":"6.testing/1.service-test.md","ref":"6.testing/1.service-test.md","articles":[]},{"title":"2. Business Component Test","level":"1.8.2","depth":2,"path":"6.testing/2.business-component-test.md","ref":"6.testing/2.business-component-test.md","articles":[]},{"title":"Optional","level":"1.8.3","depth":2,"path":"6.testing/optional.md","ref":"6.testing/optional.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"6.testing/1.service-test.md","mtime":"2018-05-25T09:29:24.094Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-05-25T09:39:57.316Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -19,7 +19,7 @@ This means installing the dependencies with NPM and start the application with t
     npm start
     ```
 
-4. Run the command below in a new command window to open the assignments and have clickable urls.
+4. Run the command below in a new command window to open the assignments and have click-able urls.
   ```javascript
    npm run assignments:run
    ```

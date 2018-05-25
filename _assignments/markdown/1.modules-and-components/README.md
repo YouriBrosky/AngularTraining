@@ -11,4 +11,4 @@ managed static page.
 * [@NgModule](https://angular.io/guide/architecture#modules)
 
 ## Tree diagram
-![Componenten](/images/1.png)
+![Components](/images/1.png)

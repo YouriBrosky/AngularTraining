@@ -49,4 +49,4 @@ The `filter()` function on Array can be used to only get the books we want.
 
     > ** Best practice: Why not filter()? **
     > 
-    > with filter() you can exclude certain events in the sequence from propogating. Since our even is the `Book[]`, and we always want this value for the sequence.
+    > with filter() you can exclude certain events in the sequence from propagating. Since our even is the `Book[]`, and we always want this value for the sequence.

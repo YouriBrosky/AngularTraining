@@ -13,4 +13,4 @@ Angular gives [Dependency Injection](https://angular.io/guide/dependency-injecti
 * Observable operators
 
 ## Tree diagram
-![Componenten](/images/4.png)
+![Components](/images/4.png)
