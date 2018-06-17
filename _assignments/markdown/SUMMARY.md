@@ -48,10 +48,5 @@
   * [1. Route Params](8.rxjs/1.route-param.md)
   * [2. Drag & Drop](8.rxjs/2.drag-n-drop.md)
   * [Optional](8.rxjs/optional.md)
-  
-* [CLI](9.cli/README.md)
-  * [1. Generate](9.cli/1.ng-generate.md)
-  * [2. Add](9.cli/2.ng-add.md)
-  * [Optional](9.cli/optional.md)
 
 * [Glossary](GLOSSARY.md)
