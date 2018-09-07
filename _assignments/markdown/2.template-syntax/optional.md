@@ -23,6 +23,10 @@ The border is going around the books in the shelve, and around the title in the 
 
 1. Generate a directive called `BookReserved` using the Angular CLI.
 ```
+// if you have the CLI installed globally:
+ng g d books/book-reserved
+
+// otherwise, you can run it locally:
 npx ng g d books/book-reserved
 ```
 or follow the steps below
