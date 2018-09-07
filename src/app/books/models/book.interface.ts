@@ -1,9 +1,9 @@
 export interface Book {
-  id: number;           // getal
-  title: string;        // text
-  author: string;       // text
-  genre: string;        // text
-  price: number;        // number
-  img: string;          // text
-  reserved: boolean;  // boolean
+  id: number;
+  title: string;
+  author: string;
+  genre: string;
+  price: number;
+  img: string;
+  reserved: boolean;
 }
