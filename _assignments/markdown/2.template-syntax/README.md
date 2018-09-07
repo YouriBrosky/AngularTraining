@@ -11,6 +11,10 @@ This way of thinking allows us a lot of freedom within the component itself like
 For the parent (usually a business) component, it does not matter what happens to the data as long as the API stays the same: 
 An input for the list of books, and an output for the chosen book.
 
+This process is done in 2 steps:
+* Create a Presentation component for the list of books
+* Create a Presentation component for the selected book
+
 ## [Techniques](https://angular.io/docs/ts/latest/guide/template-syntax.html)
 * property binding
 * event binding

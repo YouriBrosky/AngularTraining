@@ -16,7 +16,7 @@
 #### Form POST
 To save the book on the server, we have to make an HTTP POST call to the backend with the new book.
 The book is validated on the server side for the presence of an author and a title, the other fields are optional. 
-If the book is stored, you will get this response: `{ "success": true }`
+If the book is stored successfully, you will get the stored books with an ID as a response.
 Since communicating with the backend is the job for a service, we are going to add the POST to the `BookService`, and use that from `NewBookComponent`.
 
 1. Create a `store` method on the `BooksService`. Implement this method yourself, or use the [template](#save) below.
@@ -28,15 +28,35 @@ Since communicating with the backend is the job for a service, we are going to a
 
 5. `subscribe` to the `Observable` from the `BookService`, to execute the sequence and do the POST call.
 
-6. In the success-handler, reset the `bookForm` so all values are cleared and the state is reset if the response is `{ success: true }`
-   However, when `success` is false, show a [message](#error message) to the user. You can test it by removing a validation from `author` or `title` and do the POST call.
+6. In the success-handler, reset the `bookForm` so all values are cleared and the state is reset if the response is successful.
 
-##### Updating the booklist - try it out
+##### Error handling
+The book server checks if the book has already been stored, by checking the title & author. If the book is already in the shop, it will return an error with code `422` and a message.
+
+1. Show the message from the server in the UI when a book is added with the same title and author.
+  Try to keep the `HttpErrorResponse` class scoped in the service, this means that the component won't have knowledge of this class. 
+   To rethrow the error from the service so it will end up in the error handler of the component, you need the `catchError` & `throwError` operators.
+```javascript
+import {catchError} from 'rxjs/operators';
+import {throwError} from 'rxjs';
+
+http.post()
+  .pipe(
+    catchError(error: HttpErrorResponse) => {
+      // do some checking on the type of error.
+      const customError = ...
+      return throwError(customError);
+    }
+  )
+
+```
+
+##### Updating the shelve
 There are several ways to update the list of books when a book is added or deleted in the backend.
 
-##### Template trigger 
-by toggling the element that has ` | async` with an `*ngIf`, the GET for the booklist is executed again. 
-This does require extra management with boolean values and can cause the view to flash a bit.
+##### Trigger the AsyncPipe
+If you have used the AsyncPipe, you can reassign the variable used in the template with a new call to `getBooks`. 
+The AsyncPipe will pick up the change, and execute the observable.
 
 ##### Bi directional service
 With a [Bi-directional service](https://angular.io/guide/component-interaction#parent-and-children-communicate-via-a-service) you manage the observable yourself, instead of directly listening for the http calls. 
@@ -59,7 +79,7 @@ This is a very powerful mechanism, but requires you to unsubscribe from the obse
 
 2. The price has to conform to the format ###(.##), and no book is more expensive then 999.99.
     Validate the input for these cases and show an error message for the user.
-    You can use the following regulare expression if necessary.
+    You can use the following regular expression if necessary.
    ```^\d{1,3}([\.]\d{2})?$```
 
 #### ngClass
@@ -74,17 +94,14 @@ or
 #### delete
 Now that we can add books, it would also be nice to be able to remove a book.
 There is an endpoint available on `/book/:id` which handles http `DELETE` calls to delete a book from the server. The placeholder `:id` is meant for the ID of the book.
-This endpoint gives you the following response
+This endpoint gives you an empty response with status code 204 when the deletion was successful.
+
+When the book, with id 100004 for example, is not found, you will get the a 404 response with the following body
 ```javascript
-{ book: book, deleted: true } // Book is the deleted book object.
+{ detail: `Book: 100004 could not be found`, deleted: false }
 ```
 
-When the book is not found, you will get the an error 500 with the following response
-```javascript
-{ detail: "Book: " + book.id + "not found", deleted: false }
-```
-
-1. Create a method in `BooksService` that will do the HTTP Delete call.
+1. Create a method in `BooksService` that will execute the delete.
 
 2. Add a button to the application which will eventually call the delete method in `BooksService`. Remember the responsibilities of the different components, and put the code in the right places.
 ```javascript
@@ -102,7 +119,7 @@ Angular provides a [FormBuilder](https://angular.io/guide/reactive-forms#introdu
 
 #### Nested FormGroup
 It's also possible to [nest FormGroups](https://angular.io/guide/reactive-forms#nested-formgroups) inside other `FormGroup`s. In our book example, you might want to store some meta information about a book, like the date it was added to the store or the ISBN identifier.
-With a nested `FormGroup`, you can combine the date and ISBN under a group, that might be called meta.
+With a nested `FormGroup`, you can combine the date and ISBN under a group.
 Currently, when you get the `.value` of the `bookForm`, you'll get a response like:
 ```javascript
 {
@@ -136,7 +153,7 @@ There are many books that do not fit into one genre, but need te be categorized 
 With `.valueChanges` and `.statusChanges`, which are properties of `FormGroup` and `FormControl`, you can listen for any new value or when the validation status of the field changes.
 By reacting to input changes it's easier te make something like an autocomplete field.
 
-1. Listen for changes on the `title`-field using `.valueChanges`, and make a GET request on `http://localhost:3004/book/exists/:title` to see if the title is already known.
+1. Listen for changes on the `title`-field using `.valueChanges`, and make a GET request on `http://localhost:3004/book/exists/:title` to see if the title already exists.
   The endpoint responds with an empty list when there are no matches, or a filled list with all book where the start of the title matches exactly as entered.
 
 #### Edit existing books
@@ -153,9 +170,7 @@ The `Validator`s that are added to the `FormControl`s are just functions that re
 ##### save template BooksService**
 ```javascript
 save(book:Book): Observable<boolean> {
-    return this._http
-      .post('http://localhost:3004/store', book)
-      .map(response => response.json())
-      .map(json => json.success);
+    return this.http
+      .post('http://localhost:3004/store', book);
   }
 ```

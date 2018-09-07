@@ -5,29 +5,30 @@ It's possible to set the title of the window in the browser from an Angular appl
 
 1. Change the title of the window to the selected book. Which component should be responsible for this?
 
-### BookHighlighterDirective 2.0
+### BookReservedDirective 2.0
 If you have not yet finished the assignment [@Directive](../2.template-syntax/optional.md#@Directive), do that first. It is the basis for this assignment.
 This directive is not according to the StyleGuide, because it interacts with a DOM element directly. 
-Angular provides a service that adds the possibility to interact with DOM elements, even when you are not in the browser. Angular made it a *Best Practice* to always use this service, so migration to server side rendering can be done without issues.
+Angular provides a service that adds the possibility to interact with DOM elements, even when you are not in the browser. 
+Angular made it a *Best Practice* to always use this service, so advanced features like migrating to server side rendering can be done without issues.
 
-1. Inject the service `Renderer2` into the `BookHighlighterDirective`.
-2. The renderer service has 2 methods: `addClass`/`removeClass`. Rewrite the code to apply the classes using this method.
-  Unfortunately, this is a bit more code then we previously had. However, the directive is now portable to a server environment, which makes the extra code worth it.
-
+1. Inject the service `Renderer2` into the `BookReservedDirective`.
+2. The `renderer` service has a method to set the style, called [setStyle()](https://angular.io/api/core/Renderer2#setStyle).
+  Refactor the code using this method.
+  
 Now that we know how to use injection, we don't need the separate `@Input` to get a reference to the element the directive is on. Angular can inject this element for us.
 
-1. Add `private bookElement: ElementRef` to the constructor of `BookHighlighterDirective`.
-2. The `ElementRef` has a property `nativeElement`, which is the same HTML Element as we got from the template. The `nativeElement` is what the `renderer` needs to set the class.
-3. Remove the `template reference variable` and the `[]`-syntax from the template of `ShelveComponent`.
-  This makes the `BookHighlighterDirective` easier to use, because the API surface has become tinier.
+2. Inject the element of type `ElementRef` into the `BookReservedDirective`.
+2. The `ElementRef` has a property `nativeElement`, which is the same HTML Element as we got from the template. The `nativeElement` is what the `renderer` needs to set the style.
+3. Remove the `template reference variable` and the `[]`-syntax from the places where `BookReservedDirective` is used.
+  This makes the `BookReservedDirective` easier to use, because the API surface has become smaller.
 
 ### Observables
 
 #### Error handling
 You should always handle errors when working with Observable or Promises, at least with a message to the user to inform them what went wrong.
-Fot http-calls, this is twice as important, because the user does not see any errors if they are note handled. For them, the application just breaks.
+Fot http calls, this is even more important, because the user does not see any errors if they are not handled.
 
-1. Show an error message to the user when a http call fails. You can simulate this, by changing something in the url in the GET call.
+1. Show an error message to the user when a http call fails. You can simulate this, by changing the URL in the `books.service`.
 
 #### multiple `subscribe`s
 It can happen that there are multiple components listening for the same http-call, or that a new component is rendered in the DOM which makes the entire Observable run again.

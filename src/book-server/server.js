@@ -5,7 +5,7 @@ let app = express();
 let http = require('http').Server(app);
 let bodyParser = require('body-parser');
 
-let maxId = 1;
+let maxId = 10;
 let overview = [
   {
     "id": 100004,
@@ -60,20 +60,27 @@ function initHttpServer() {
   });
 
   app.get('/overview', handleOverview);
+
   function handleOverview(request, response) {
     response.json(overview.concat([]));
   }
 
   app.get('/book/:id', handleDetail);
+
   function handleDetail(request, response) {
     let detail = overview.find(function (entry) {
       return entry.id == request.params.id
     });
 
-    response.json(detail);
+    if (detail) {
+      response.json(detail);
+    } else {
+      response.status(404).json({detail: `Book: ${book.id} could not be found`})
+    }
   }
 
   app.get('/book/exists/:title', handleExists);
+
   function handleExists(request, response) {
     let detail = overview.find(function (entry) {
       return entry.title.startsWith(request.params.title);
@@ -83,6 +90,7 @@ function initHttpServer() {
   }
 
   app.delete('/book/:id', handleDelete);
+
   function handleDelete(request, response) {
     let detail = overview.find(function (entry) {
       return entry.id == request.params.id
@@ -90,18 +98,27 @@ function initHttpServer() {
 
     if (detail) {
       overview.splice(overview.indexOf(detail), 1);
-      response.json({book: detail, deleted: true});
+      response.status(204);
     } else {
-      response.status(500).json({detail: `Book: ${book.id} could not be found`, deleted: false});
+      response.status(404).json({detail: `Book: ${book.id} could not be found`, deleted: false});
     }
   }
 
   app.post('/store', handleStore);
+
   function handleStore(request, response) {
     console.log('store reached');
     if (request.body.title && request.body.author) {
+      let exists = overview.find(function (entry) {
+        return entry.title === request.params.title && entry.author === request.params.author;
+      });
+
+      if (exists) {
+        response.status(422).json({request: request.body, message: "Book is already stored"})
+      }
+
       let book = {
-        id: "10000" + (maxId++),
+        id: 10000 + (maxId++),
         title: request.body.title,
         author: request.body.author,
         img: "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg",
@@ -113,11 +130,9 @@ function initHttpServer() {
       overview.push(book);
       console.log(`store pushed ${request.body.title}`);
 
-      response.json({success: true, request: book})
-
+      response.json(book)
     } else {
-      response.json({success: false, request: request.body})
-
+      response.status(422).json({request: request.body, message: "title and author are required"})
     }
   }
 }
