@@ -726,73 +726,74 @@ Directives are TypeScript classes annotated with <code>@Directive</code> instead
 This directive is going to be used in the <code>Shelve</code> and in the <code>Book</code> component. 
 The border is going around the books in the shelve, and around the title in the book detail.</p>
 <ol>
-<li>Generate a directive called <code>BookReserved</code> using the Angular CLI.
-```
-// if you have the CLI installed globally:
-ng g d books/book-reserved</li>
+<li>Generate a directive called <code>BookReserved</code> using the Angular CLI.</li>
 </ol>
-<p>// otherwise, you can run it locally:
-npx ng g d books/book-reserved</p>
-<pre><code>or follow the steps below
-1. Create a new file called `book-reserved.directive.ts` in the `books` folder.
-2. Export a class called `BookReservedDirective` and decorate it with the `@Directive` annotation.
-3. The `@Directive` decorator requires the property `selector`, which is how we reference it in the template. Give it a value that complies with the [StyleGuide](https://angular.io/guide/styleguide)
-4. Declare the directive with the `BooksModule` so we can use the directive in the template of the components declared in this module.
+<pre><code>// if you have the CLI installed globally:
+ng g d books/book-reserved
 
-The `BookReservedDirective` needs an input to know what book is reserved, and based on the value of that input it should add a border to the element.
-
-1. Add a property called `reserved` and decorate it with the `@Input()` decorator.
-2. Implement the `OnInit` interface from `@angular/core` and add the required method.
-3. Create a method that will add the border, something like `addBorder` and call it from ngOnInit.
- Always try and keep the lifecycle methods clean from any logic.
-4. Use the property binding `[]`-syntax to set the `reserved` property from the template of `ShelveComponent`. 
-
-To interact with the DOM from a Directive, we need a reference to the HTML-element to toggle the class. 
-Angular provides the `template reference variable` mechanism for this, that you use by adding `#variableName` in the template to the element.
-Remember the `ngIf/else`, where we put a `template reference variable` on the element we want to show in the else-case.
-
-We can use the `template reference variable` to pass in the HtmlElement into our directive using another `@Input` decorated property.
-
-1. Add a new `@Input` decorated property to `BookReservedDirective` that will hold the HTML element. the type is HTMLElement.
-2. In the template of `ShelveComponent`, add a `template reference variable` to the `button`-element.
-3. Pass the `template reference variable` into `BookReservedDirective` using the `[]`-syntax.
-
-To finish this task, we need to add the border to the element. The `HTMLElement` that we get from the `template reference variable` has an API to do this.
-We&apos;ll use the property `style.border` to set the border, by assigning a CSS value to it.
-The example below will add a 2 pixel wide, solid blue border to the element:
-</code></pre><p>element.style.border = &apos;2px solid #0000FF&apos;</p>
-<pre><code>1. Add a border to the element based on the value of the `reserved` property.
-
-### Reusing the `BookReserved` directive.
-We can reuse the `BookReserved` directive on the book detail to add an extra visual cue to show that the book is reserved.
-
-1. Add the `BookReserved` directive to the template of `BooksComponent`. 
-  Make sure you put the directive on an `HTMLElement`, and not on a `Component`. 
-  This means we might need to make some changes to the HTML structure.
-
-What happens when we click a reserved book first and then a different book?
-Why isn&apos;t the UI updated with the new value?
-This is because we only set the border during the `OnInit` lifecycle phase, which is called only once. 
-To have the directive respond new values being passed in, we need to implement the `OnChanges` lifecycle.
-
-2. Implement the `OnChanges` interface, and add the required method.
-3. Move method call that adds the border from `OnInit` to `OnChanges`. 
-In the lifecycle hook `ngOnChanges`, all the properties decorated with `@Input()` are updated with the new value.
-
-### Refactoring the `BookReserved` directive.
-We have created an `@Input` called reserved to pass in the property from the book to the directive.
-It&apos;s possible to combine one `@Input` with the directive itself:
-```html
-&lt;!-- before --&gt;
-&lt;button
- ibsBookReserved [reserved]=&quot;book.reserved&quot; [element]=&quot;el&quot; #el&gt;
-&lt;/button&gt;
-
-&lt;!-- after --&gt;
-&lt;button
- [ibsBookReserved]=&quot;book.reserved&quot; [element]=&quot;el&quot; #el&gt;
-&lt;/button&gt;
+// otherwise, you can run it locally:
+npx ng g d books/book-reserved
+</code></pre><p>or follow the steps below</p>
+<ol>
+<li>Create a new file called <code>book-reserved.directive.ts</code> in the <code>books</code> folder.</li>
+<li>Export a class called <code>BookReservedDirective</code> and decorate it with the <code>@Directive</code> annotation.</li>
+<li>The <code>@Directive</code> decorator requires the property <code>selector</code>, which is how we reference it in the template. Give it a value that complies with the <a href="https://angular.io/guide/styleguide" target="_blank">StyleGuide</a></li>
+<li>Declare the directive with the <code>BooksModule</code> so we can use the directive in the template of the components declared in this module.</li>
+</ol>
+<p>The <code>BookReservedDirective</code> needs an input to know what book is reserved, and based on the value of that input it should add a border to the element.</p>
+<ol>
+<li>Add a property called <code>reserved</code> and decorate it with the <code>@Input()</code> decorator.</li>
+<li>Implement the <code>OnInit</code> interface from <code>@angular/core</code> and add the required method.</li>
+<li>Create a method that will add the border, something like <code>addBorder</code> and call it from ngOnInit.
+Always try and keep the lifecycle methods clean from any logic.</li>
+<li>Use the property binding <code>[]</code>-syntax to set the <code>reserved</code> property from the template of <code>ShelveComponent</code>. </li>
+</ol>
+<p>To interact with the DOM from a Directive, we need a reference to the HTML-element to toggle the class. 
+Angular provides the <code>template reference variable</code> mechanism for this, that you use by adding <code>#variableName</code> in the template to the element.
+Remember the <code>ngIf/else</code>, where we put a <code>template reference variable</code> on the element we want to show in the else-case.</p>
+<p>We can use the <code>template reference variable</code> to pass in the HtmlElement into our directive using another <code>@Input</code> decorated property.</p>
+<ol>
+<li>Add a new <code>@Input</code> decorated property to <code>BookReservedDirective</code> that will hold the HTML element. the type is HTMLElement.</li>
+<li>In the template of <code>ShelveComponent</code>, add a <code>template reference variable</code> to the <code>button</code>-element.</li>
+<li>Pass the <code>template reference variable</code> into <code>BookReservedDirective</code> using the <code>[]</code>-syntax.</li>
+</ol>
+<p>To finish this task, we need to add the border to the element. The <code>HTMLElement</code> that we get from the <code>template reference variable</code> has an API to do this.
+We&apos;ll use the property <code>style.border</code> to set the border, by assigning a CSS value to it.
+The example below will add a 2 pixel wide, solid blue border to the element:</p>
+<pre><code>element.style.border = &apos;2px solid #0000FF&apos;
 </code></pre><ol>
+<li>Add a border to the element based on the value of the <code>reserved</code> property.</li>
+</ol>
+<h3 id="reusing-the-bookreserved-directive">Reusing the <code>BookReserved</code> directive.</h3>
+<p>We can reuse the <code>BookReserved</code> directive on the book detail to add an extra visual cue to show that the book is reserved.</p>
+<ol>
+<li>Add the <code>BookReserved</code> directive to the template of <code>BooksComponent</code>. 
+Make sure you put the directive on an <code>HTMLElement</code>, and not on a <code>Component</code>. 
+This means we might need to make some changes to the HTML structure.</li>
+</ol>
+<p>What happens when we click a reserved book first and then a different book?
+Why isn&apos;t the UI updated with the new value?
+This is because we only set the border during the <code>OnInit</code> lifecycle phase, which is called only once. 
+To have the directive respond new values being passed in, we need to implement the <code>OnChanges</code> lifecycle.</p>
+<ol>
+<li>Implement the <code>OnChanges</code> interface, and add the required method.</li>
+<li>Move method call that adds the border from <code>OnInit</code> to <code>OnChanges</code>. 
+In the lifecycle hook <code>ngOnChanges</code>, all the properties decorated with <code>@Input()</code> are updated with the new value.</li>
+</ol>
+<h3 id="refactoring-the-bookreserved-directive">Refactoring the <code>BookReserved</code> directive.</h3>
+<p>We have created an <code>@Input</code> called reserved to pass in the property from the book to the directive.
+It&apos;s possible to combine one <code>@Input</code> with the directive itself:</p>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- before --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+ <span class="hljs-attr">ibsBookReserved</span> [<span class="hljs-attr">reserved</span>]=<span class="hljs-string">&quot;book.reserved&quot;</span> [<span class="hljs-attr">element</span>]=<span class="hljs-string">&quot;el&quot;</span> #<span class="hljs-attr">el</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- after --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+ [<span class="hljs-attr">ibsBookReserved</span>]=<span class="hljs-string">&quot;book.reserved&quot;</span> [<span class="hljs-attr">element</span>]=<span class="hljs-string">&quot;el&quot;</span> #<span class="hljs-attr">el</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+</code></pre>
+<ol>
 <li>Rename the <code>@Input() reserved</code> to the name of the directive.</li>
 <li>Remove the extra code from the templates.</li>
 </ol>
@@ -867,7 +868,7 @@ When this phase has completed and the properties are filled with a reference, An
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Optional","level":"1.4.3","depth":2,"next":{"title":"Dependency Injection","level":"1.5","depth":1,"path":"3.dependency-injection/README.md","ref":"3.dependency-injection/README.md","articles":[{"title":"1. Services","level":"1.5.1","depth":2,"path":"3.dependency-injection/1.service.md","ref":"3.dependency-injection/1.service.md","articles":[]},{"title":"2. Http","level":"1.5.2","depth":2,"path":"3.dependency-injection/2.http.md","ref":"3.dependency-injection/2.http.md","articles":[]},{"title":"Optional","level":"1.5.3","depth":2,"path":"3.dependency-injection/optional.md","ref":"3.dependency-injection/optional.md","articles":[]}]},"previous":{"title":"2. BookComponent","level":"1.4.2","depth":2,"path":"2.template-syntax/2.presentation-component-book.md","ref":"2.template-syntax/2.presentation-component-book.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"2.template-syntax/optional.md","mtime":"2018-09-07T08:53:43.496Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-07T10:43:10.304Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Optional","level":"1.4.3","depth":2,"next":{"title":"Dependency Injection","level":"1.5","depth":1,"path":"3.dependency-injection/README.md","ref":"3.dependency-injection/README.md","articles":[{"title":"1. Services","level":"1.5.1","depth":2,"path":"3.dependency-injection/1.service.md","ref":"3.dependency-injection/1.service.md","articles":[]},{"title":"2. Http","level":"1.5.2","depth":2,"path":"3.dependency-injection/2.http.md","ref":"3.dependency-injection/2.http.md","articles":[]},{"title":"Optional","level":"1.5.3","depth":2,"path":"3.dependency-injection/optional.md","ref":"3.dependency-injection/optional.md","articles":[]}]},"previous":{"title":"2. BookComponent","level":"1.4.2","depth":2,"path":"2.template-syntax/2.presentation-component-book.md","ref":"2.template-syntax/2.presentation-component-book.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"2.template-syntax/optional.md","mtime":"2018-09-14T14:25:12.610Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-14T14:25:31.560Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -22,6 +22,7 @@ This directive is going to be used in the `Shelve` and in the `Book` component.
 The border is going around the books in the shelve, and around the title in the book detail.
 
 1. Generate a directive called `BookReserved` using the Angular CLI.
+
 ```
 // if you have the CLI installed globally:
 ng g d books/book-reserved
@@ -29,6 +30,7 @@ ng g d books/book-reserved
 // otherwise, you can run it locally:
 npx ng g d books/book-reserved
 ```
+
 or follow the steps below
 1. Create a new file called `book-reserved.directive.ts` in the `books` folder.
 2. Export a class called `BookReservedDirective` and decorate it with the `@Directive` annotation.
