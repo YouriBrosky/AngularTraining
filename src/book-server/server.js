@@ -75,7 +75,7 @@ function initHttpServer() {
     if (detail) {
       response.json(detail);
     } else {
-      response.status(404).json({detail: `Book: ${book.id} could not be found`})
+      response.status(404).json({detail: `Book: ${detail.id} could not be found`})
     }
   }
 
@@ -100,7 +100,7 @@ function initHttpServer() {
       overview.splice(overview.indexOf(detail), 1);
       response.status(204);
     } else {
-      response.status(404).json({detail: `Book: ${book.id} could not be found`, deleted: false});
+      response.status(404).json({detail: `Book: ${detail.id} could not be found`, deleted: false});
     }
   }
 
