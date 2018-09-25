@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>2. Root Routes · GitBook</title>
+        <title>1. Feature Routes · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -60,7 +60,7 @@
     <link rel="next" href="3.router-link.html" />
     
     
-    <link rel="prev" href="1.books-routing-module.html" />
+    <link rel="prev" href="1.root-routing-module.html" />
     
 
     </head>
@@ -464,12 +464,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="1.books-routing-module.html">
+        <li class="chapter " data-level="1.8.1" data-path="1.root-routing-module.html">
             
-                <a href="1.books-routing-module.html">
+                <a href="1.root-routing-module.html">
             
                     
-                    1. Feature Routes
+                    2. Root Routes
             
                 </a>
             
@@ -477,12 +477,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.2" data-path="2.root-routing-module.html">
+        <li class="chapter active" data-level="1.8.2" data-path="2.books-routing-module.html">
             
-                <a href="2.root-routing-module.html">
+                <a href="2.books-routing-module.html">
             
                     
-                    2. Root Routes
+                    1. Feature Routes
             
                 </a>
             
@@ -693,7 +693,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >2. Root Routes</a>
+        <a href=".." >1. Feature Routes</a>
     </h1>
 </div>
 
@@ -708,14 +708,47 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h4 id="app-routingmodulets">app-routing.module.ts</h4>
+                                <h4 id="booksroutes">BooksRoutes</h4>
+<p>There are advantages to separate the routes per module, like adding lazy loading.
+Currently, <code>BooksComponent</code> shows everything; the list of books, the selected book and adding a new book to the application.
+This component will be replaced in <code>AppComponent</code> by a <code>&lt;router-outlet&gt;</code>, which will put the right component in place based on the URL.</p>
+<h4 id="books-routingmodulets">books-routing.module.ts</h4>
+<p>It&apos;s a <a href="https://angular.io/guide/router#milestone-2-routing-module" target="_blank">best practice</a> to define routes in their own module. 
+When additional routing features are added like guards or the routing gets big, it keeps the code cleaner because it&apos;s separated.</p>
 <ol>
-<li><p>Create a new file for the Root routing called <code>app-routing.module.ts</code>.</p>
+<li><p>Create a new file that will hold the routing configuration, called <code>books-routing.module.ts</code>. <a href="https://angular.io/guide/styleguide#angular-ngmodule-names" target="_blank">naming guidelines: routing</a></p>
 </li>
-<li><p>Create a variable called <code>APP_ROUTES</code> and instantiate this with a new <code>Route[]</code>.</p>
+<li><p>Create a <code>const</code> called <code>BOOKS_ROUTES</code> and instantiate this with a new <code>Route[]</code>.</p>
+<pre><code class="lang-javascript"> <span class="hljs-keyword">const</span> BOOKS_ROUTES: Route[] = [];
+</code></pre>
 </li>
-<li><p>Create a new <code>Route</code> definition with an empty <code>path</code> <code>&apos;&apos;</code> which does a redirect to <code>books</code> and add this to <code>APP_ROUTES</code>. 
- Remember to put <code>pathMatch</code> to <code>full</code> to this <a href="../GLOSSARY.html#route" class="glossary-term" title="Couples an url to a component, or aggregate components under a single path.">route</a> is only executed when the path is <em>exactly</em> <code>&apos;/&apos;</code>.</p>
+<li><p>Create a new <code>Route</code> in the array with the properties <code>path: &apos;books&apos;</code> and <code>component: BooksComponent</code>.</p>
+</li>
+<li><p>Create a <code>Route</code> for the <code>NewBookComponent</code>. The path for will be <code>books/new</code>.</p>
+</li>
+<li><p>Export a variable <code>BooksRoutes: ModuleWithProviders</code> and instantiate this with <code>RouterModule.forChild(BOOKS_ROUTES)</code></p>
+<blockquote>
+<p><strong>RouterModule.forChild()</strong></p>
+<p>The forChild() method adds routes to an existing Router instance, which is created by forRoot().
+forChild() is meant for Feature Modules, and add the benefit to be easily lazy loaded.</p>
+</blockquote>
+<pre><code class="lang-javascript">    <span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> BooksRoutesModule: ModuleWithProviders = RouterModule.forChild(BOOKS_ROUTES)
+</code></pre>
+</li>
+<li><p>In <code>BooksModule</code>, import <code>BooksRoutesModule</code> and add it to <code>imports:[]</code>. This registers the routes with the <code>BooksModule</code>.
+Because the <code>BooksModule</code> is imported by the <code>AppModule</code>, the routes are registered with the application.</p>
+</li>
+<li><p>Since the form is now shown in it&apos;s own page, it can be removed from the template of <code>BooksComponent</code>.</p>
+</li>
+<li><p>To make it al look a bit nicer, replace the class <code>card g--10 m--1</code> with <code>card g--12</code> in the template of <code>NewBookComponent</code>.</p>
+</li>
+</ol>
+<h4 id="change-in-app-routingmodulets">Change in <code>app-routing.module.ts</code></h4>
+<p>We still have a <a href="../GLOSSARY.html#route" class="glossary-term" title="Couples an url to a component, or aggregate components under a single path.">route</a> definition to <code>BooksComponent</code> in the routing for the <code>AppModule</code>. Since the FeatureModule now has it&apos;s own definition, we can remove this configuration from <code>AppModule</code>.</p>
+<ol>
+<li><p>Remove the reference to <code>BooksModule</code> from <code>app-routing.module.ts</code></p>
+</li>
+<li><p>Change the <a href="../GLOSSARY.html#route" class="glossary-term" title="Couples an url to a component, or aggregate components under a single path.">route</a> configuration to the definition below, and set the <code>redirectTo</code> property to the <a href="../GLOSSARY.html#route" class="glossary-term" title="Couples an url to a component, or aggregate components under a single path.">route</a> of <code>BooksComponent</code>.</p>
 <pre><code class="lang-javascript"> &lt;Route&gt;{ path: <span class="hljs-string">&apos;&apos;</span>, pathMatch: <span class="hljs-string">&apos;full&apos;</span>, redirectTo: <span class="hljs-string">&apos;&apos;</span> }
 </code></pre>
 <blockquote>
@@ -723,17 +756,6 @@
 <p>Because we want to immediately redirect to books when we hit the landing page, we make use of the redirect property.
 A different scenario would be a landing page, like <code>HomeComponent</code>, where the user sees relevant information.</p>
 </blockquote>
-</li>
-<li><p>Export a variable <code>AppRoutes: ModuleWithProviders</code> and instantiate this with <code>RouterModule.forRoot(APP_ROUTES)</code>.</p>
-<blockquote>
-<p><strong>RouterModule.forRoot()</strong></p>
-<p>With forRoot() an instance of the Router <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> is created. It is <em>important</em> that forRoot is used once in the entire application.
-The Root Module should be the only place where forRoot() is used.</p>
-</blockquote>
-</li>
-<li><p>Import <code>AppRoutes</code> in <code>AppModule</code> and add this to the <code>imports</code> property of <code>NgModule</code>.</p>
-</li>
-<li><p>Replace in the template of <code>AppComponent</code> the tag <code>&lt;ibs-books&gt;&lt;/ibs-books&gt;</code> with <code>&lt;router-outlet&gt;&lt;/router-outlet&gt;</code>.</p>
 </li>
 </ol>
 
@@ -763,7 +785,7 @@ The Root Module should be the only place where forRoot() is used.</p>
 
             
                 
-                <a href="1.books-routing-module.html" class="navigation navigation-prev " aria-label="Previous page: 1. Feature Routes">
+                <a href="1.root-routing-module.html" class="navigation navigation-prev " aria-label="Previous page: 2. Root Routes">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -779,7 +801,7 @@ The Root Module should be the only place where forRoot() is used.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"2. Root Routes","level":"1.8.2","depth":2,"next":{"title":"3. Routerlink","level":"1.8.3","depth":2,"path":"6.routing/3.router-link.md","ref":"6.routing/3.router-link.md","articles":[]},"previous":{"title":"1. Feature Routes","level":"1.8.1","depth":2,"path":"6.routing/1.books-routing-module.md","ref":"6.routing/1.books-routing-module.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"6.routing/2.root-routing-module.md","mtime":"2018-09-12T15:50:35.320Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-14T14:25:31.560Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1. Feature Routes","level":"1.8.2","depth":2,"next":{"title":"3. Routerlink","level":"1.8.3","depth":2,"path":"6.routing/3.router-link.md","ref":"6.routing/3.router-link.md","articles":[]},"previous":{"title":"2. Root Routes","level":"1.8.1","depth":2,"path":"6.routing/1.root-routing-module.md","ref":"6.routing/1.root-routing-module.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"6.routing/2.books-routing-module.md","mtime":"2018-09-25T04:38:59.515Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-25T04:40:36.259Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

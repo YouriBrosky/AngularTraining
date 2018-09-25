@@ -464,12 +464,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="../6.routing/1.books-routing-module.html">
+        <li class="chapter " data-level="1.8.1" data-path="../6.routing/1.root-routing-module.html">
             
-                <a href="../6.routing/1.books-routing-module.html">
+                <a href="../6.routing/1.root-routing-module.html">
             
                     
-                    1. Feature Routes
+                    2. Root Routes
             
                 </a>
             
@@ -477,12 +477,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.2" data-path="../6.routing/2.root-routing-module.html">
+        <li class="chapter " data-level="1.8.2" data-path="../6.routing/2.books-routing-module.html">
             
-                <a href="../6.routing/2.root-routing-module.html">
+                <a href="../6.routing/2.books-routing-module.html">
             
                     
-                    2. Root Routes
+                    1. Feature Routes
             
                 </a>
             
@@ -767,16 +767,6 @@ However, this means we do not have injection available and have to provide any c
 <p>. Add the property <code>datasource</code> to <code>InventoryComponent</code>.</p>
 <p>. inject the bookService in the constructor of <code>InventoryComponent</code></p>
 <p>. in ngOnInit, create a new BooksDatasource instance and assign it to the dataSource property.</p>
-<h3 id="styling">Styling</h3>
-<p>The CDK table has no styling by default, and what we have in the css is what gives it the current look.
-Angular Material provides a <a href="https://material.angular.io/components/table/overview" target="_blank">table</a> with more styling and features, but it&apos;s built upon the CDK table.</p>
-<p>. change the cdk table to the material table.</p>
-<ol>
-<li>import <code>BrowserAnimationsModule</code> into the <code>app.module</code>. This is required for the animations to work.</li>
-<li>import <code>MatTableModule</code> from <code>@angular/material</code> into the feature module.</li>
-<li>change all <code>cdk</code> in the inventory template to <code>mat</code>, according to <a href="https://material.angular.io/components/table/overview" target="_blank">documentation</a></li>
-<li>you can now remove most of the CSS in inventory.component.css and the specific CSS classes in your html, since the material table automatically uses material design CSS.</li>
-</ol>
 
                                 
                                 </section>
@@ -820,7 +810,7 @@ Angular Material provides a <a href="https://material.angular.io/components/tabl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1. CDK Table","level":"1.9.1","depth":2,"next":{"title":"2. Material Components","level":"1.9.2","depth":2,"path":"7.libraries/2.material-components.md","ref":"7.libraries/2.material-components.md","articles":[]},"previous":{"title":"Libraries","level":"1.9","depth":1,"path":"7.libraries/README.md","ref":"7.libraries/README.md","articles":[{"title":"1. CDK Table","level":"1.9.1","depth":2,"path":"7.libraries/1.cdk-table.md","ref":"7.libraries/1.cdk-table.md","articles":[]},{"title":"2. Material Components","level":"1.9.2","depth":2,"path":"7.libraries/2.material-components.md","ref":"7.libraries/2.material-components.md","articles":[]},{"title":"Optional","level":"1.9.3","depth":2,"path":"7.libraries/optional.md","ref":"7.libraries/optional.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"7.libraries/1.cdk-table.md","mtime":"2018-09-12T15:50:35.324Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-14T14:25:31.560Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1. CDK Table","level":"1.9.1","depth":2,"next":{"title":"2. Material Components","level":"1.9.2","depth":2,"path":"7.libraries/2.material-components.md","ref":"7.libraries/2.material-components.md","articles":[]},"previous":{"title":"Libraries","level":"1.9","depth":1,"path":"7.libraries/README.md","ref":"7.libraries/README.md","articles":[{"title":"1. CDK Table","level":"1.9.1","depth":2,"path":"7.libraries/1.cdk-table.md","ref":"7.libraries/1.cdk-table.md","articles":[]},{"title":"2. Material Components","level":"1.9.2","depth":2,"path":"7.libraries/2.material-components.md","ref":"7.libraries/2.material-components.md","articles":[]},{"title":"Optional","level":"1.9.3","depth":2,"path":"7.libraries/optional.md","ref":"7.libraries/optional.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"7.libraries/1.cdk-table.md","mtime":"2018-09-25T04:38:59.516Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-25T04:40:36.259Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
