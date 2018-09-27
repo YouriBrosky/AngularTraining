@@ -33,8 +33,8 @@
   * [Optional](5.reactive-forms/optional.md)
 
 * [Routing](6.routing/README.md)
-  * [2. Root Routes](6.routing/1.root-routing-module.md)
-  * [1. Feature Routes](6.routing/2.books-routing-module.md)
+  * [1. Root Routes](6.routing/1.root-routing-module.md)
+  * [2. Feature Routes](6.routing/2.books-routing-module.md)
   * [3. Routerlink](6.routing/3.router-link.md)
   * [4. 404](6.routing/4.404.md)
   * [Optional](6.routing/optional.md)

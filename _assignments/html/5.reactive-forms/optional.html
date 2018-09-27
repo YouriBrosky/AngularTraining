@@ -469,7 +469,7 @@
                 <a href="../6.routing/1.root-routing-module.html">
             
                     
-                    2. Root Routes
+                    1. Root Routes
             
                 </a>
             
@@ -482,7 +482,7 @@
                 <a href="../6.routing/2.books-routing-module.html">
             
                     
-                    1. Feature Routes
+                    2. Feature Routes
             
                 </a>
             
@@ -742,49 +742,48 @@ Give it the correct return type.</p>
 </li>
 </ol>
 <h5 id="error-handling">Error handling</h5>
-<p>The book server checks if the book has already been stored, by checking the title &amp; author. If the book is already in the shop, it will return an error with code <code>422</code> and a message.</p>
+<p>The book server checks if the book has already been stored, by checking the title &amp; author. If the book is already in the shop, 
+it will return an error with code <code>422</code> and a message.</p>
 <ol>
-<li>Show the message from the server in the UI when a book is added with the same title and author.
+<li><p>Show the message from the server in the UI when a book is added with the same title and author.
 Try to keep the <code>HttpErrorResponse</code> class scoped in the <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a>, this means that the component won&apos;t have knowledge of this class. 
-To rethrow the error from the <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> so it will end up in the error handler of the component, you need the <code>catchError</code> &amp; <code>throwError</code> <a href="../GLOSSARY.html#operators" class="glossary-term" title="Observable operators must be imported from &apos;rxjs/operators&apos; to use them.">operators</a>.
-```javascript
-import {catchError} from &apos;rxjs/<a href="../GLOSSARY.html#operators" class="glossary-term" title="Observable operators must be imported from &apos;rxjs/operators&apos; to use them.">operators</a>&apos;;
-import {throwError} from &apos;rxjs&apos;;</li>
-</ol>
-<p>http.post()
-  .<a href="../GLOSSARY.html#pipe" class="glossary-term" title="Change how the interpolated property is outputted in the template.">pipe</a>(
+To rethrow the error from the <a href="../GLOSSARY.html#service" class="glossary-term" title="A service in the Angular context is an injectable class which is responsible for doing the work. It has no UserInterface dependencies.">service</a> so it will end up in the error handler of the component, you need the <code>catchError</code> &amp; <code>throwError</code> <a href="../GLOSSARY.html#operators" class="glossary-term" title="Observable operators must be imported from &apos;rxjs/operators&apos; to use them.">operators</a>.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> {catchError} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;rxjs/operators&apos;</span>;
+<span class="hljs-keyword">import</span> {throwError} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;rxjs&apos;</span>;
+
+http.post()
+  .pipe(
     catchError(error: HttpErrorResponse) =&gt; {
-      // do some checking on the type of error.
-      const customError = ...
+      <span class="hljs-comment">// do some checking on the type of error.</span>
+      <span class="hljs-keyword">const</span> customError = ...
       return throwError(customError);
     }
-  )</p>
-<pre><code>
-##### Updating the shelve
-There are several ways to update the list of books when a book is added or deleted in the backend.
+  )
+</code></pre>
+</li>
+</ol>
+<h5 id="updating-the-shelve">Updating the shelve</h5>
+<p>There are several ways to update the list of books when a book is added or deleted in the backend.</p>
+<h5 id="trigger-the-asyncpipe">Trigger the AsyncPipe</h5>
+<p>If you have used the <a href="../GLOSSARY.html#asyncpipe" class="glossary-term" title="With the async-pipe from Angular it&apos;s easier to manage simple Observables. This pipe also ensures that components are unregistered from the sequence when the component is destroyed.">AsyncPipe</a>, you can reassign the variable used in the template with a new call to <code>getBooks</code>. 
+The <a href="../GLOSSARY.html#asyncpipe" class="glossary-term" title="With the async-pipe from Angular it&apos;s easier to manage simple Observables. This pipe also ensures that components are unregistered from the sequence when the component is destroyed.">AsyncPipe</a> will pick up the change, and execute the observable.</p>
+<h5 id="bi-directional-service">Bi directional service</h5>
+<p>With a <a href="https://angular.io/guide/component-interaction#parent-and-children-communicate-via-a-service" target="_blank">Bi-directional service</a> you manage the observable yourself, instead of directly listening for the http calls. 
+This is a very powerful mechanism, but requires you to unsubscribe from the observable yourself. This requires some rebuilding and rethinking of the application.</p>
+<h4 id="price">price</h4>
+<ol>
+<li>Add an input field for <code>price</code>.</li>
+</ol>
+<pre><code class="lang-javascript">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;g--12&quot;</span>&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container&quot;</span>&gt;</span>
 
-##### Trigger the AsyncPipe
-If you have used the AsyncPipe, you can reassign the variable used in the template with a new call to `getBooks`. 
-The AsyncPipe will pick up the change, and execute the observable.
-
-##### Bi directional service
-With a [Bi-directional service](https://angular.io/guide/component-interaction#parent-and-children-communicate-via-a-service) you manage the observable yourself, instead of directly listening for the http calls. 
-This is a very powerful mechanism, but requires you to unsubscribe from the observable yourself. This requires some rebuilding and rethinking of the application.
-
-#### price
-
-1. Add an input field for `price`.
-
-```javascript
-&lt;div class=&quot;g--12&quot;&gt;
-  &lt;div class=&quot;container&quot;&gt;
-
-    &lt;label for=&quot;price&quot; class=&quot;g--4 no-margin&quot;&gt; Price &lt;/label&gt;
-    &lt;input type=&quot;text&quot; class=&quot;g--8 no-margin&quot; id=&quot;price&quot;&gt;
-  &lt;/div&gt;
-  &lt;!-- error message --&gt;
-&lt;/div&gt;
-</code></pre><ol>
+    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;price&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;g--4 no-margin&quot;</span>&gt;</span> Price <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;g--8 no-margin&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;price&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- error message --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre>
+<ol>
 <li>The price has to conform to the format ###(.##), and no book is more expensive then 999.99.
  Validate the input for these cases and show an error message for the user.
  You can use the following regular expression if necessary.
@@ -917,7 +916,7 @@ What changes would you need to make to get <code>NewBookComponent</code> reusabl
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Optional","level":"1.7.4","depth":2,"next":{"title":"Routing","level":"1.8","depth":1,"path":"6.routing/README.md","ref":"6.routing/README.md","articles":[{"title":"2. Root Routes","level":"1.8.1","depth":2,"path":"6.routing/1.root-routing-module.md","ref":"6.routing/1.root-routing-module.md","articles":[]},{"title":"1. Feature Routes","level":"1.8.2","depth":2,"path":"6.routing/2.books-routing-module.md","ref":"6.routing/2.books-routing-module.md","articles":[]},{"title":"3. Routerlink","level":"1.8.3","depth":2,"path":"6.routing/3.router-link.md","ref":"6.routing/3.router-link.md","articles":[]},{"title":"4. 404","level":"1.8.4","depth":2,"path":"6.routing/4.404.md","ref":"6.routing/4.404.md","articles":[]},{"title":"Optional","level":"1.8.5","depth":2,"path":"6.routing/optional.md","ref":"6.routing/optional.md","articles":[]}]},"previous":{"title":"3. Validations","level":"1.7.3","depth":2,"path":"5.reactive-forms/3.validations.md","ref":"5.reactive-forms/3.validations.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"5.reactive-forms/optional.md","mtime":"2018-09-12T15:50:35.318Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-25T04:40:36.259Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Optional","level":"1.7.4","depth":2,"next":{"title":"Routing","level":"1.8","depth":1,"path":"6.routing/README.md","ref":"6.routing/README.md","articles":[{"title":"1. Root Routes","level":"1.8.1","depth":2,"path":"6.routing/1.root-routing-module.md","ref":"6.routing/1.root-routing-module.md","articles":[]},{"title":"2. Feature Routes","level":"1.8.2","depth":2,"path":"6.routing/2.books-routing-module.md","ref":"6.routing/2.books-routing-module.md","articles":[]},{"title":"3. Routerlink","level":"1.8.3","depth":2,"path":"6.routing/3.router-link.md","ref":"6.routing/3.router-link.md","articles":[]},{"title":"4. 404","level":"1.8.4","depth":2,"path":"6.routing/4.404.md","ref":"6.routing/4.404.md","articles":[]},{"title":"Optional","level":"1.8.5","depth":2,"path":"6.routing/optional.md","ref":"6.routing/optional.md","articles":[]}]},"previous":{"title":"3. Validations","level":"1.7.3","depth":2,"path":"5.reactive-forms/3.validations.md","ref":"5.reactive-forms/3.validations.md","articles":[]},"dir":"ltr"},"config":{"plugins":[],"root":"_assignments/markdown","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"gitbook":"*"},"file":{"path":"5.reactive-forms/optional.md","mtime":"2018-09-27T15:34:20.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-27T15:46:40.453Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
