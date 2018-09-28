@@ -3,17 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ilionx-angular-training-test": {
+    "ilionx-angular-training": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "ibs",
       "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ilionx-angular-training-test",
+            "outputPath": "dist/ilionx-angular-training",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ilionx-angular-training-test:build"
+            "browserTarget": "ilionx-angular-training:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ilionx-angular-training-test:build:production"
+              "browserTarget": "ilionx-angular-training:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ilionx-angular-training-test:build"
+            "browserTarget": "ilionx-angular-training:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "ilionx-angular-training-test-e2e": {
+    "ilionx-angular-training-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ilionx-angular-training-test:serve"
+            "devServerTarget": "ilionx-angular-training:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ilionx-angular-training-test:serve:production"
+              "devServerTarget": "ilionx-angular-training:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "ilionx-angular-training-test"
+  "defaultProject": "ilionx-angular-training"
 }
