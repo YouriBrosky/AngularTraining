@@ -8,10 +8,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "start": "concurrently \"npm run book-server\" \"ng serve -o\"",
-    "book-server": "node src/book-server/server.js",
-    "assignments:html": "npx gitbook build . ./_assignments/html",
-    "assignments:pdf": "npx gitbook pdf . ./_assignments/assignments.pdf",
-    "assignments:run": "npx http-server ./_assignments/html -o"
+    "book-server": "node src/book-server/server.js"
   },
   "private": true,
   "dependencies": {
