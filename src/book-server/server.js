@@ -110,7 +110,7 @@ function initHttpServer() {
     console.log('store reached');
     if (request.body.title && request.body.author) {
       let exists = overview.find(function (entry) {
-        return entry.title === request.params.title && entry.author === request.params.author;
+        return entry.title === request.body.title && entry.author === request.body.author;
       });
 
       if (exists) {
