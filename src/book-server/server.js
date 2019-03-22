@@ -100,7 +100,7 @@ function initHttpServer() {
       overview.splice(overview.indexOf(detail), 1);
       response.status(204);
     } else {
-      response.status(404).json({detail: `Book: ${detail.id} could not be found`, deleted: false});
+      response.status(404).json({detail: `Book: ${request.params.id} could not be found`, deleted: false});
     }
   }
 
