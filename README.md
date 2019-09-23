@@ -1,5 +1,12 @@
 # Ilionx Angular Training
 
+## Environment
+1. Download Node (nodejs.org)
+2. install the Angular CLI globally:
+```
+npm i @angular/cli -g
+```
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
 
 ## Start
