@@ -1,0 +1,21 @@
+<!-- Start ShelveComponent -->
+
+<div class="tile no-pad no-margin">
+  <h3 class="subtitle no-margin-vertical">Shelve</h3>
+</div>
+<ul class="no-pad no-margin">
+  <li *ngFor="let book of books">
+    <button
+      #reservedTemplate
+      ibsBookReserved
+      (click)="onSelect(book)"
+      class="g--12 no-margin btn--raised bg--carrot"
+      [reserved]="book.reserved"
+      [htmlElement]="reservedTemplate"
+    >
+      {{ book.title }}
+    </button>
+  </li>
+</ul>
+
+<!-- End ShelveComponent -->

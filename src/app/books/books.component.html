@@ -1,0 +1,28 @@
+<!-- Start BooksComponent -->
+
+<!-- Start NewBookComponent -->
+
+<!-- End NewBookComponent -->
+
+<div class="container--wrap--m">
+  <div class="card g--4 g-s--12">
+    <ibs-shelve-component
+      [books]="books | async"
+      (select)="selectBook($event)"
+    ></ibs-shelve-component>
+  </div>
+
+  <div class="card g--8 g-s--12">
+    <ibs-book-component
+      *ngIf="selectedBook; else elseBlock"
+      [book]="selectedBook"
+      (deselect)="deselectBook()"
+    >
+    </ibs-book-component>
+    <ng-template #elseBlock
+      ><h2>No book is currently selected!</h2>
+    </ng-template>
+  </div>
+</div>
+
+<!-- End BooksComponent -->
